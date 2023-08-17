@@ -135,6 +135,8 @@ class GoodWeRunningData {
 	DiagStatusH = 0;
 	DiagStatusL = 0;
 	TotalPowerPv = 0;
+	HouseConsumption = 0;
+	BatteryMode = "wait for sync"
 }
 
 class GoodWeMeterPhase {
@@ -422,7 +424,17 @@ class GoodWeUdp {
 					this.#runningData.DiagStatusH = this.#GetUintFromByteArray(rcvbuf, 241, 4);
 					this.#runningData.DiagStatusL = this.#GetUintFromByteArray(rcvbuf, 245, 4);
 					this.#runningData.TotalPowerPv = this.#runningData.Pv1.Power + this.#runningData.Pv2.Power + this.#runningData.Pv3.Power + this.#runningData.Pv4.Power;
-
+					if (this.#runningData.Battery1.Mode == 1) {
+						this.#runningData.HouseConsumption = this.#runningData.TotalPowerPv - this.#runningData.AcActivePower - this.#runningData.Battery1.Power;
+						this.#runningData.BatteryMode = "Charge;"
+					}
+					if (this.#runningData.Battery1.Mode == 2) {
+						this.#runningData.HouseConsumption = this.#runningData.TotalPowerPv - this.#runningData.AcActivePower + this.#runningData.Battery1.Power;
+						this.#runningData.BatteryMode = "Discharge"
+					}
+					else {
+						this.#runningData.BatteryMode = "Standby"
+					}
 					this.#status = GoodWeUdp.ConStatus.Online;
 				} else {
 					this.#status = GoodWeUdp.ConStatus.Offline;

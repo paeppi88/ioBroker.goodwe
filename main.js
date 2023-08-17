@@ -169,6 +169,8 @@ class Goodwe extends utils.Adapter {
 		this.CreateObjectStateNumber("RunningData", "DiagStatusH");
 		this.CreateObjectStateNumber("RunningData", "DiagStatusL");
 		this.CreateObjectStateNumber("RunningData", "TotalPowerPv");
+		this.CreateObjectStateNumber("RunningData", "HouseConsumption");
+		this.CreateObjectStateString("RunningData", "BatteryMode");
 	}
 	
 	CreateObjectsExtComData() {
@@ -566,6 +568,8 @@ class Goodwe extends utils.Adapter {
 		this.setStateAsync("RunningData.DiagStatusH", this.inverter.RunningData.DiagStatusH, true);
 		this.setStateAsync("RunningData.DiagStatusL", this.inverter.RunningData.DiagStatusL, true);
 		this.setStateAsync("RunningData.TotalPowerPv", this.inverter.RunningData.TotalPowerPv, true);
+		this.setStateAsync("RunningData.HouseConsumption", this.inverter.RunningData.HouseConsumption, true);
+		this.setStateAsync("RunningData.BatteryMode", this.inverter.RunningData.BatteryMode, true);
 	}
 	
 	UpdateExtComData() {
