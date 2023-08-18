@@ -137,6 +137,10 @@ class GoodWeRunningData {
 	TotalPowerPv = 0;
 	HouseConsumption = 0;
 	BatteryMode = "wait for sync"
+	BatteryChargeCurrent = 0;
+	BatteryDischargeCurrent = 0;
+	BatteryChargePower = 0;
+	BatteryDischargePower = 0;
 }
 
 class GoodWeMeterPhase {
@@ -427,10 +431,14 @@ class GoodWeUdp {
 					if (this.#runningData.Battery1.Mode == 1) {
 						this.#runningData.HouseConsumption = this.#runningData.TotalPowerPv - this.#runningData.AcActivePower - this.#runningData.Battery1.Power;
 						this.#runningData.BatteryMode = "Charge;"
+						this.#runningData.BatteryChargeCurrent = this.#runningData.Battery1.Current;
+						this.#runningData.BatteryChargePower = this.#runningData.Battery1.Power;
 					}
 					if (this.#runningData.Battery1.Mode == 2) {
 						this.#runningData.HouseConsumption = this.#runningData.TotalPowerPv - this.#runningData.AcActivePower + this.#runningData.Battery1.Power;
 						this.#runningData.BatteryMode = "Discharge"
+						this.#runningData.BatteryDischargeCurrent = this.#runningData.Battery1.Current * (-1);
+						this.#runningData.BatteryDischargePower = this.#runningData.Battery1.Power * (-1);
 					}
 					else {
 						this.#runningData.BatteryMode = "Standby"

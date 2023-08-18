@@ -171,6 +171,10 @@ class Goodwe extends utils.Adapter {
 		this.CreateObjectStateNumber("RunningData", "TotalPowerPv");
 		this.CreateObjectStateNumber("RunningData", "HouseConsumption");
 		this.CreateObjectStateString("RunningData", "BatteryMode");
+		this.CreateObjectStateNumber("RunningData", "BatteryChargeCurrent");
+		this.CreateObjectStateNumber("RunningData", "BatteryChargePower");
+		this.CreateObjectStateNumber("RunningData", "BatteryDischargeCurrent");
+		this.CreateObjectStateNumber("RunningData", "BatteryDischargePower");
 	}
 	
 	CreateObjectsExtComData() {
@@ -570,6 +574,10 @@ class Goodwe extends utils.Adapter {
 		this.setStateAsync("RunningData.TotalPowerPv", this.inverter.RunningData.TotalPowerPv, true);
 		this.setStateAsync("RunningData.HouseConsumption", this.inverter.RunningData.HouseConsumption, true);
 		this.setStateAsync("RunningData.BatteryMode", this.inverter.RunningData.BatteryMode, true);
+		this.setStateAsync("RunningData.BatteryChargeCurrent", this.inverter.RunningData.BatteryChargeCurrent, true);
+		this.setStateAsync("RunningData.BatteryChargePower", this.inverter.RunningData.BatteryChargePower, true);
+		this.setStateAsync("RunningData.BatteryDischargeCurrent", this.inverter.RunningData.BatteryDischargeCurrent, true);
+		this.setStateAsync("RunningData.BatteryDischargePower", this.inverter.RunningData.BatteryDischargePower, true);
 	}
 	
 	UpdateExtComData() {

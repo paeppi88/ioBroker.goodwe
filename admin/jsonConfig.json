@@ -14,7 +14,7 @@
 		"pollCycle": {
 			"newLine": true,
 			"type": "number",
-			"min": 3,
+			"min": 10,
 			"max": 3600,
 			"label": "Poll cycle",
 			"sm": 12,
